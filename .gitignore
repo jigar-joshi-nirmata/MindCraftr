@@ -48,3 +48,4 @@ instance/
 .env
 .env.local
 
+frontend/*
