@@ -1,0 +1,239 @@
+{
+	"info": {
+		"_postman_id": "7c90a94c-b86a-4b9c-9f50-c5d12e58c15a",
+		"name": "Opus Jobs Trigger Shared",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46611541"
+	},
+	"item": [
+		{
+			"name": "Get Details",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-service-key",
+						"value": "your_api_key",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/workflow/put_your_workflow_id_here",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"workflow",
+						"put_your_workflow_id_here"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Initiate Job",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-service-key",
+						"value": "your_api_key",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"workflowId\": \"put_your_workflow_id_here\",\n  \"title\": \"Opus API triggered Job\",\n  \"description\": \"Automated job execution via Postman\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/job/initiate",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"job",
+						"initiate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate URL s3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-service-key",
+						"value": "your_api_key",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"fileExtension\": \".pdf\",\n  \"accessScope\": \"organization\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/job/file/upload",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"job",
+						"file",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload to s3",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": ""
+					}
+				},
+				"url": {
+					"raw": "put_the_presigned_url_here",
+					"host": [
+						"put_the_presigned_url_here"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Execute Job",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-service-key",
+						"value": "your_api_key",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jobExecutionId\": \"your_job_id\",\n    \"jobPayloadSchemaInstance\": {\n        \"workflow_input_vt5u58mst\": {\n            \"value\": [\n                \"https://files.opus.com/media/private/uploaded/media_e8721656-e74f-4f9e-a187-308bc3f32d0f.pdf\",\n                \"https://files.opus.com/media/private/uploaded/media_c5e47f8b-95b1-4c1c-b91f-b23f61ddc246.pdf\"\n            ],\n            \"type\": \"array_files\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/job/execute",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"job",
+						"execute"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Job Results",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-service-key",
+						"value": "your_api_key",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/job/put_your_job_id_here/results",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"job",
+						"put_your_job_id_here",
+						"results"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Job Audit",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-service-key",
+						"value": "your_api_key",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/job/put_your_job_id_here/audit",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"job",
+						"put_your_job_id_here",
+						"audit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Job Status",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-service-key",
+						"value": "your_api_key",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/job/put_your_job_id_here/status",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"job",
+						"put_your_job_id_here",
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

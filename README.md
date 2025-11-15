@@ -87,6 +87,10 @@ curl http://localhost:5001/api/v1/flashcards
 
 - **GET** `/api/v1/presets` - Get available test presets
 
+### Test Generation
+
+- **POST** `/api/v1/tests/generate` - Generate a test (custom or preset)
+
 ### Health Check
 
 - **GET** `/` - API health check

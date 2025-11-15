@@ -81,6 +81,25 @@ def create_tables(conn):
         )
     ''')
     
+    # Generated tests table
+    cursor.execute('''
+        CREATE TABLE generated_tests (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            test_id TEXT UNIQUE NOT NULL,
+            exam_type TEXT NOT NULL,
+            exam_name TEXT NOT NULL,
+            num_questions INTEGER NOT NULL,
+            question_format TEXT,
+            difficulty TEXT NOT NULL,
+            preset_duration TEXT,
+            syllabus_content TEXT,
+            test_data TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id)
+        )
+    ''')
+    
     conn.commit()
 
 def seed_data(conn):

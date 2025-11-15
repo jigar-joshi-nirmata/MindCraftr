@@ -11,6 +11,7 @@ def initialize_database():
     
     # Drop all tables if they exist to ensure script is re-runnable
     print("Dropping existing tables...")
+    cursor.execute('DROP TABLE IF EXISTS generated_tests')
     cursor.execute('DROP TABLE IF EXISTS topic_mastery')
     cursor.execute('DROP TABLE IF EXISTS flashcards')
     cursor.execute('DROP TABLE IF EXISTS recommended_topics')
